@@ -1,6 +1,8 @@
-# Welcome to your Jupyter Book
+# Pendahuluan
 
-bjbjbjhjhvhvvjvjvv
+Repository ini dibuat untuk menampung materi dan Tugas dari matakuliah Penambangan Data Kelas E
+
+P
 
 ```{tableofcontents}
 ```
