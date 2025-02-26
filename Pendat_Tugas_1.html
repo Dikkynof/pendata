@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Pendat_Tugas_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Data Mining" href="Dataminng.html" />
+    <link rel="prev" title="Pengenalan Data Mining (Penambangan Data)" href="Datamining.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,8 +179,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Dataminng.html">Data Mining</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Datamining.html">Pengenalan Data Mining (Penambangan Data)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Data Understanding</strong></a></li>
 </ul>
 
     </div>
@@ -379,15 +379,78 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
-<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+<h1><strong>Data Understanding</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
 <p>Data Understanding adalah proses eksplorasi awal untuk memahami karakteristik data, struktur, dan kualitasnya. Pada tahap ini, kita mengevaluasi apakah data cukup untuk dianalisis atau perlu dibersihkan dan ditambah.</p>
-<p>Tujuan utama dari data understanding adalah sebagau berikut :</p>
+<p>Tujuan utama dari data understanding adalah sebagai berikut :</p>
 <ul class="simple">
-<li><p>Memahami Konteks Data : Mengetahui dari mana data berasal, apa arti setiap variabel, dan bagaimana hubungan antarvariabel.</p></li>
+<li><p>Memahami Konteks Data : Mengetahui dari mana data berasal, apa arti setiap variabel, dan bagaimana hubungan antar variabel.</p></li>
 <li><p>Mendeteksi Masalah Data : Mengidentifikasi missing values, outliers, noise, atau inkonsistensi dalam data.</p></li>
 <li><p>Mengidentifikasi missing values, outliers, noise, atau inkonsistensi dalam data.</p></li>
 <li><p>Menentukan Arah Analisis : Berdasarkan pemahaman awal, peneliti dapat merumuskan hipotesis atau menentukan teknik data mining yang tepat.</p></li>
 </ul>
+<p>Data Understanding adalah tahap awal dalam analisis data, di mana kita berusaha memahami karakteristik data yang kita miliki sebelum menggunakannya untuk pengolahan lebih lanjut. Berikut adalah penjelasan setiap langkahnya :</p>
+<ol class="arabic simple">
+<li><p><strong>Pengumpulan Data</strong></p></li>
+</ol>
+<p>Langkah pertama adalah mengumpulkan data dari berbagai sumber. Data ini bisa berasal dari file, database, atau sistem lain. Dan harus memastikan semua data yang dikumpulkan sesuai tujuan analisis.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Sampling</strong></p></li>
+</ol>
+<p>Jika data yang dikumpulkan terlalu besar, kita tidak selalu harus langsung melihat semuanya. Kita bisa mengambil sebagian kecil dari data yang tetap mewakili keseluruhan. Ini membantu kita memahami isi data lebih cepat tanpa harus bekerja dengan seluruh dataset sejak awal.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Profiling Data</strong></p></li>
+</ol>
+<p>Setelah memiliki data, kita perlu melihat strukturnya. Kita bisa mengecek berapa banyak kolom yang ada, jenis informasi apa saja yang disimpan, apakah ada nilai yang hilang, atau apakah ada pola tertentu dalam data. Tujuannya adalah mendapatkan gambaran awal tentang bentuk dan isi data yang kita miliki.</p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Korelasi dan Asosiasi</strong></p></li>
+</ol>
+<p>Di tahap ini, kita mulai melihat apakah ada hubungan antara berbagai bagian data. Misalnya, apakah panjang kelopak bunga berhubungan dengan lebar kelopak? Jika ada pola atau hubungan tertentu, ini bisa memberikan wawasan lebih dalam tentang bagaimana data saling berhubungan.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Eksplorasi Data</strong></p></li>
+</ol>
+<p>Setelah memahami hubungan dalam data, kita bisa membuat berbagai tampilan atau gambar yang membantu kita melihat pola dengan lebih jelas. Misalnya, dengan menggambarkan bagaimana ukuran bunga berbeda untuk setiap jenisnya, kita bisa lebih mudah memahami karakteristik masing-masing kelompok dalam data.</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>Identifikasi Masalah Data</strong></p></li>
+</ol>
+<p>Tidak semua data yang dikumpulkan sempurna. Bisa saja ada data yang hilang, angka yang terlalu besar atau kecil dibandingkan normal, atau ada entri yang muncul lebih dari sekali. Dalam langkah ini, kita mencari dan mencatat masalah-masalah yang ada dalam data agar bisa diperbaiki sebelum melangkah ke tahap berikutnya.</p>
+<ol class="arabic simple" start="7">
+<li><p><strong>Validasi Data</strong></p></li>
+</ol>
+<p>Terakhir, sebelum menggunakan data untuk analisis lebih lanjut, kita perlu memastikan bahwa semuanya sudah sesuai dengan yang kita harapkan. Kita bisa memeriksa apakah jenis data sudah benar, apakah semua informasi yang penting tersedia, dan apakah tidak ada kesalahan yang akan mengganggu proses berikutnya.</p>
+<p>Selanjutnya dibawah akan ada contoh pengumpulan dan penggabungan data dari dua database berbeda (MySQl dan PostgreSQL) dengan statistik deskriptif sederhana dan visualisasi distribusi data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pymysql<span class="w"> </span>psycopg2<span class="w"> </span>pandas<span class="w"> </span>sqlalchemy
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pymysql
+  Downloading PyMySQL-1.1.1-py3-none-any.whl.metadata (4.4 kB)
+Requirement already satisfied: psycopg2 in /usr/local/lib/python3.11/dist-packages (2.9.10)
+Requirement already satisfied: pandas in /usr/local/lib/python3.11/dist-packages (2.2.2)
+Requirement already satisfied: sqlalchemy in /usr/local/lib/python3.11/dist-packages (2.0.38)
+Requirement already satisfied: numpy&gt;=1.23.2 in /usr/local/lib/python3.11/dist-packages (from pandas) (1.26.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.11/dist-packages (from pandas) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.11/dist-packages (from pandas) (2025.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.11/dist-packages (from pandas) (2025.1)
+Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.11/dist-packages (from sqlalchemy) (3.1.1)
+Requirement already satisfied: typing-extensions&gt;=4.6.0 in /usr/local/lib/python3.11/dist-packages (from sqlalchemy) (4.12.2)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.11/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Downloading PyMySQL-1.1.1-py3-none-any.whl (44 kB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/45.0 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">45.0/45.0 kB</span> <span class=" -Color -Color-Red">1.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: pymysql
+Successfully installed pymysql-1.1.1
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -421,12 +484,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Dataminng.html"
+       href="Datamining.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data Mining</p>
+        <p class="prev-next-title">Pengenalan Data Mining (Penambangan Data)</p>
       </div>
     </a>
 </div>
