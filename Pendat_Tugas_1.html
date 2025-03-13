@@ -184,6 +184,8 @@
 
 
 
+
+
 </ul>
 
     </div>
@@ -405,6 +407,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualiasai-distribusi-data-yang-digabungkan">Visualiasai distribusi data yang digabungkan</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-masalah-data">Identifikasi Masalah Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers"><strong>Outliers</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyebab-outlier"><strong>Penyebab Outlier</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dampak-outlier"><strong>Dampak Outlier</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pentingnya-deteksi-outlier"><strong>Pentingnya Deteksi Outlier</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn"><strong>K-Nearest Neighbors (KNN)</strong></a></li>
 </ul>
 
             </nav>
@@ -570,20 +582,21 @@ Requirement already satisfied: typing-extensions&gt;=4.6.0 in /usr/local/lib/pyt
 Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.11/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
 Downloading PyMySQL-1.1.1-py3-none-any.whl (44 kB)
 ?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/45.0 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">45.0/45.0 kB</span> <span class=" -Color -Color-Red">2.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">45.0/45.0 kB</span> <span class=" -Color -Color-Red">1.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25hDownloading psycopg2_binary-2.9.10-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
 ?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/3.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-   ━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.2/3.0 MB</span> <span class=" -Color -Color-Red">7.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.3/3.0 MB</span> <span class=" -Color -Color-Red">19.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">3.0/3.0 MB</span> <span class=" -Color -Color-Red">33.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.0/3.0 MB</span> <span class=" -Color -Color-Red">26.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.4/3.0 MB</span> <span class=" -Color -Color-Red">12.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━ <span class=" -Color -Color-Green">2.9/3.0 MB</span> <span class=" -Color -Color-Red">42.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.0/3.0 MB</span> <span class=" -Color -Color-Red">33.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: pymysql, psycopg2-binary
-Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 </pre></div>
 </div>
 </div>
@@ -628,7 +641,7 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-35921bf0-9594-4e43-b874-ee0e810b0186" class="colab-df-container">
+  <div id="df-3ae7e856-e82e-408f-aa56-621964e5e3c0" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -689,7 +702,7 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-35921bf0-9594-4e43-b874-ee0e810b0186')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-3ae7e856-e82e-408f-aa56-621964e5e3c0')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -741,12 +754,12 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-35921bf0-9594-4e43-b874-ee0e810b0186 button.colab-df-convert');
+        document.querySelector('#df-3ae7e856-e82e-408f-aa56-621964e5e3c0 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-35921bf0-9594-4e43-b874-ee0e810b0186');
+        const element = document.querySelector('#df-3ae7e856-e82e-408f-aa56-621964e5e3c0');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -780,7 +793,7 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-f53ce0c3-d708-42c2-91b6-9bb99dcc1b10" class="colab-df-container">
+  <div id="df-8fb5f735-d4e4-4dfa-abe6-a82655d7239d" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -841,7 +854,7 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-f53ce0c3-d708-42c2-91b6-9bb99dcc1b10')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8fb5f735-d4e4-4dfa-abe6-a82655d7239d')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -893,12 +906,12 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-f53ce0c3-d708-42c2-91b6-9bb99dcc1b10 button.colab-df-convert');
+        document.querySelector('#df-8fb5f735-d4e4-4dfa-abe6-a82655d7239d button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-f53ce0c3-d708-42c2-91b6-9bb99dcc1b10');
+        const element = document.querySelector('#df-8fb5f735-d4e4-4dfa-abe6-a82655d7239d');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -942,7 +955,7 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-1364d1cb-fa16-4b06-bfce-c3e23fd0e841" class="colab-df-container">
+  <div id="df-0e7be6bd-33fd-4f44-acc1-828e8ac2f969" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1064,7 +1077,7 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1364d1cb-fa16-4b06-bfce-c3e23fd0e841')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0e7be6bd-33fd-4f44-acc1-828e8ac2f969')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1116,12 +1129,12 @@ Successfully installed psycopg2-binary-2.9.10 pymysql-1.1.1
 
     <script>
       const buttonEl =
-        document.querySelector('#df-1364d1cb-fa16-4b06-bfce-c3e23fd0e841 button.colab-df-convert');
+        document.querySelector('#df-0e7be6bd-33fd-4f44-acc1-828e8ac2f969 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1364d1cb-fa16-4b06-bfce-c3e23fd0e841');
+        const element = document.querySelector('#df-0e7be6bd-33fd-4f44-acc1-828e8ac2f969');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1209,6 +1222,49 @@ mode        5.000000        3.000      1.500000     0.200000
 </div>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="identifikasi-masalah-data">
+<h1>Identifikasi Masalah Data<a class="headerlink" href="#identifikasi-masalah-data" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Missing Values:</strong> Menemukan data yang hilang atau tidak lengkap.</p></li>
+<li><p><strong>Outliers:</strong> Mendeteksi nilai-nilai ekstrem yang mungkin merupakan kesalahan atau anomali.</p></li>
+<li><p><strong>Duplikasi Data:</strong> Mengidentifikasi baris atau entri yang duplikat.</p></li>
+<li><p><strong>Inkonsistensi:</strong> Memeriksa apakah ada ketidaksesuaian dalam format atau nilai data.</p></li>
+</ul>
+<section id="outliers">
+<h2><strong>Outliers</strong><a class="headerlink" href="#outliers" title="Link to this heading">#</a></h2>
+<p>Outlier adalah titik data yang secara signifikan berbeda dari sebagian besar data dalam suatu dataset. Outlier dapat terjadi karena beberapa alasan:</p>
+<section id="penyebab-outlier">
+<h3><strong>Penyebab Outlier</strong><a class="headerlink" href="#penyebab-outlier" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Kesalahan Pengukuran:</strong> Kesalahan saat mengumpulkan data, misalnya, kesalahan sensor atau human error.</p></li>
+<li><p><strong>Variasi Alami:</strong> Kejadian langka atau anomali yang memang terjadi dalam data.</p></li>
+<li><p><strong>Kesalahan Input Data:</strong> Kesalahan saat memasukkan data, seperti typo atau kesalahan entri.</p></li>
+</ul>
+</section>
+<section id="dampak-outlier">
+<h3><strong>Dampak Outlier</strong><a class="headerlink" href="#dampak-outlier" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Mengubah Nilai Statistik:</strong> Mean dan standar deviasi dapat terpengaruh oleh outlier.</p></li>
+<li><p><strong>Mengurangi Akurasi Model:</strong> Outlier dapat menyebabkan model machine learning menjadi kurang akurat.</p></li>
+<li><p><strong>Mengaburkan Pola Data:</strong> Outlier dapat menyembunyikan pola atau tren yang sebenarnya dalam data.</p></li>
+</ul>
+</section>
+<section id="pentingnya-deteksi-outlier">
+<h3><strong>Pentingnya Deteksi Outlier</strong><a class="headerlink" href="#pentingnya-deteksi-outlier" title="Link to this heading">#</a></h3>
+<p>Deteksi outlier penting untuk:</p>
+<ul class="simple">
+<li><p><strong>Membersihkan Data:</strong> Menghapus atau memperbaiki data yang tidak valid.</p></li>
+<li><p><strong>Mengidentifikasi Anomali:</strong> Mendeteksi kejadian langka atau mencurigakan, seperti fraud detection.</p></li>
+<li><p><strong>Memahami Variasi Data:</strong> Mempelajari variasi atau penyimpangan dalam data.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="k-nearest-neighbors-knn">
+<h1><strong>K-Nearest Neighbors (KNN)</strong><a class="headerlink" href="#k-nearest-neighbors-knn" title="Link to this heading">#</a></h1>
+<p>KNN adalah algoritma machine learning yang digunakan untuk klasifikasi dan regresi. Berikut adalah penjelasan rinci tentang KNN:</p>
+<p>Prinsip Kerja KNN</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1291,6 +1347,16 @@ mode        5.000000        3.000      1.500000     0.200000
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualiasai-distribusi-data-yang-digabungkan">Visualiasai distribusi data yang digabungkan</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-masalah-data">Identifikasi Masalah Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers"><strong>Outliers</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penyebab-outlier"><strong>Penyebab Outlier</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dampak-outlier"><strong>Dampak Outlier</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pentingnya-deteksi-outlier"><strong>Pentingnya Deteksi Outlier</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbors-knn"><strong>K-Nearest Neighbors (KNN)</strong></a></li>
 </ul>
 
   </nav></div>
