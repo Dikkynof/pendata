@@ -1,0 +1,124 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.11/dist-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.11/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.11/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+from sklearn.neighbors import NearestNeighbors
+
+# Pilih fitur yang akan digunakan untuk deteksi outlier
+X = df_iris[fitur].values
+
+# Inisialisasi model KNN
+k = 5  # Jumlah tetangga terdekat
+knn = NearestNeighbors(n_neighbors=k, metric='euclidean')
+knn.fit(X)
+
+# Hitung jarak ke k tetangga terdekat
+distances, indices = knn.kneighbors(X)
+
+# Hitung rata-rata jarak ke k tetangga terdekat
+mean_distances = distances.mean(axis=1)
+
+# Tentukan threshold untuk outlier
+threshold = np.percentile(mean_distances, 99)# Ambil 1% data dengan jarak terbesar sebagai outlier
+
+# Tandai outlier
+df_iris['outlier'] = mean_distances > threshold
+
+# Menampilkan data yang dianggap outlier
+outliers_data = df_iris[df_iris['outlier']]
+print("\nOutliers detected:")
+print(outliers_data)
+
+# Visualisasi untuk pasangan kolom petal length vs petal width
+plt.figure(figsize=(12, 6))
+
+# Diagram 1: Petal Length vs Petal Width
+plt.subplot(1, 2, 1)  # 1 baris, 2 kolom, diagram pertama
+plt.scatter(df_iris['petal length'], df_iris['petal width'],c=df_iris['outlier'], cmap='viridis', label='Data')
+plt.scatter(outliers_data['petal length'],outliers_data['petal width'], color='red', label='Outliers')
+plt.xlabel('Petal Length')
+plt.ylabel('Petal Width')
+plt.title('Petal Length vs Petal Width')
+plt.legend()
+
+# Diagram 2: Sepal Length vs Sepal Width
+plt.subplot(1, 2, 2)  # 1 baris, 2 kolom, diagram kedua
+plt.scatter(df_iris['sepal length'], df_iris['sepal width'],c=df_iris['outlier'], cmap='viridis', label='Data')
+plt.scatter(outliers_data['sepal length'],outliers_data['sepal width'], color='red', label='Outliers')
+plt.xlabel('Sepal Length')
+plt.ylabel('Sepal Width')
+plt.title('Sepal Length vs Sepal Width')
+plt.legend()
+
+plt.tight_layout()  # Agar layout tidak tumpang tindih
+plt.show()
+------------------
+
+----- stdout -----
+
+Outliers detected:
+      id  petal length  petal width  sepal_length  sepal_width  outlier
+106  107           4.5          1.7           4.9          2.5     True
+131  132           6.4          2.0           7.9          3.8     True
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py[0m in [0;36mget_loc[0;34m(self, key)[0m
+[1;32m   3804[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3805[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_engine[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mcasted_key[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3806[0m         [0;32mexcept[0m [0mKeyError[0m [0;32mas[0m [0merr[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32mindex.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
+
+[0;32mindex.pyx[0m in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
+
+[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
+
+[0;32mpandas/_libs/hashtable_class_helper.pxi[0m in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
+
+[0;31mKeyError[0m: 'sepal length'
+
+The above exception was the direct cause of the following exception:
+
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m<ipython-input-10-632b73258b23>[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m     41[0m [0;31m# Diagram 2: Sepal Length vs Sepal Width[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     42[0m [0mplt[0m[0;34m.[0m[0msubplot[0m[0;34m([0m[0;36m1[0m[0;34m,[0m [0;36m2[0m[0;34m,[0m [0;36m2[0m[0;34m)[0m  [0;31m# 1 baris, 2 kolom, diagram kedua[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 43[0;31m [0mplt[0m[0;34m.[0m[0mscatter[0m[0;34m([0m[0mdf_iris[0m[0;34m[[0m[0;34m'sepal length'[0m[0;34m][0m[0;34m,[0m [0mdf_iris[0m[0;34m[[0m[0;34m'sepal width'[0m[0;34m][0m[0;34m,[0m[0mc[0m[0;34m=[0m[0mdf_iris[0m[0;34m[[0m[0;34m'outlier'[0m[0;34m][0m[0;34m,[0m [0mcmap[0m[0;34m=[0m[0;34m'viridis'[0m[0;34m,[0m [0mlabel[0m[0;34m=[0m[0;34m'Data'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     44[0m [0mplt[0m[0;34m.[0m[0mscatter[0m[0;34m([0m[0moutliers_data[0m[0;34m[[0m[0;34m'sepal length'[0m[0;34m][0m[0;34m,[0m[0moutliers_data[0m[0;34m[[0m[0;34m'sepal width'[0m[0;34m][0m[0;34m,[0m [0mcolor[0m[0;34m=[0m[0;34m'red'[0m[0;34m,[0m [0mlabel[0m[0;34m=[0m[0;34m'Outliers'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     45[0m [0mplt[0m[0;34m.[0m[0mxlabel[0m[0;34m([0m[0;34m'Sepal Length'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m   4100[0m             [0;32mif[0m [0mself[0m[0;34m.[0m[0mcolumns[0m[0;34m.[0m[0mnlevels[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   4101[0m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_multilevel[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 4102[0;31m             [0mindexer[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mcolumns[0m[0;34m.[0m[0mget_loc[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   4103[0m             [0;32mif[0m [0mis_integer[0m[0;34m([0m[0mindexer[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   4104[0m                 [0mindexer[0m [0;34m=[0m [0;34m[[0m[0mindexer[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py[0m in [0;36mget_loc[0;34m(self, key)[0m
+[1;32m   3810[0m             ):
+[1;32m   3811[0m                 [0;32mraise[0m [0mInvalidIndexError[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 3812[0;31m             [0;32mraise[0m [0mKeyError[0m[0;34m([0m[0mkey[0m[0;34m)[0m [0;32mfrom[0m [0merr[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   3813[0m         [0;32mexcept[0m [0mTypeError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3814[0m             [0;31m# If we have a listlike key, _check_indexing_error will raise[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mKeyError[0m: 'sepal length'
+
